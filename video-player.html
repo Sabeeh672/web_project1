@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player - LearnHub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="dashboard.html">
+                <i class="fas fa-arrow-left me-2"></i> Back to Dashboard
+            </a>
+            <div class="d-flex align-items-center">
+                <span class="text-white me-3" id="courseProgress">0% Complete</span>
+                <a href="dashboard.html" class="btn btn-sm btn-outline-light">Exit</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Video Player Section -->
+            <div class="col-lg-8 p-0">
+                <div class="bg-dark" style="min-height: 100vh;">
+                    <!-- Video Player -->
+                    <div class="bg-black" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                        <iframe id="videoPlayer" 
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                                src="" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <!-- Video Info -->
+                    <div class="p-4 text-white">
+                        <h3 id="lessonTitle">Lesson Title</h3>
+                        <p class="text-muted mb-3" id="lessonDuration">Duration</p>
+                        
+                        <div class="d-flex gap-2 mb-4">
+                            <button class="btn btn-outline-light" id="prevBtn" onclick="navigateLesson('prev')">
+                                <i class="fas fa-chevron-left me-2"></i>Previous
+                            </button>
+                            <button class="btn btn-success" id="completeBtn" onclick="markComplete()">
+                                <i class="fas fa-check me-2"></i>Mark as Complete
+                            </button>
+                            <button class="btn btn-outline-light" id="nextBtn" onclick="navigateLesson('next')">
+                                Next<i class="fas fa-chevron-right ms-2"></i>
+                            </button>
+                        </div>
+
+                        <!-- Lesson Description -->
+                        <div class="card bg-secondary">
+                            <div class="card-body">
+                                <h5 class="card-title">About this lesson</h5>
+                                <p class="card-text" id="lessonDescription">
+                                    In this lesson, you'll learn the fundamentals and best practices.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Curriculum Sidebar -->
+            <div class="col-lg-4 bg-light p-0" style="max-height: 100vh; overflow-y: auto;">
+                <div class="p-3 border-bottom bg-white sticky-top">
+                    <h5 class="mb-1" id="courseTitle">Course Title</h5>
+                    <p class="text-muted small mb-2" id="courseInstructor">Instructor</p>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 0%" id="progressBar">0%</div>
+                    </div>
+                </div>
+
+                <!-- Lessons List -->
+                <div id="lessonsListContainer">
+                    <!-- Lessons will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script src="auth.js"></script>
+    <script src="video-player.js"></script>
+</body>
+</html>
